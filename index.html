@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="bg-primary text-center">Weather Dashboard</h1>
+    </header>
+
+    <main class="row min-vh-100">
+        <div class="col-4" id="search-area-div">
+            <h3 class="text-center">Search for a City:</h3>
+            <form id="search-form" class="m-2">
+                <input class="form-control" id="search-input" placeholder="Eg. Sydney">
+                <button type="submit" class="btn btn-primary w-100">Submit</button>
+            </form>
+
+            <div class="border-top border-primary" id="previous-searches">
+                <ul id="previous-searches-UL"></ul>
+            </div>
+            <button id="clear-previous-searches" class="btn btn-danger w-100">Clear</button>
+        </div>
+
+        <div id="results-area-div" class="col-8">
+            <div id="city-today-div">
+                <h3 id="city-time-header"></h3>
+                <p id="current-temp"></p>
+                <p id="current-wind"></p>
+                <p id="current-humidity"></p>
+                <p id="current-uv"></p>
+
+                <!-- Today's weather here -->
+            </div>
+            <div id="five-day-forecast-div" class="row">
+                <!-- 5 day forecast cards here -->
+            </div>
+        </div>
+
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./script.js"></script>
+</body>
+
+</html>
