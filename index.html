@@ -16,7 +16,7 @@
     </header>
 
     <main class="row min-vh-100">
-        <div class="col-4" id="search-area-div">
+        <div class="col-3" id="search-area-div">
             <h3 class="text-center">Search for a City:</h3>
             <form id="search-form" class="m-2">
                 <input class="form-control" id="search-input" placeholder="Eg. Sydney">
@@ -24,12 +24,13 @@
             </form>
 
             <div class="border-top border-primary" id="previous-searches">
-                <ul id="previous-searches-UL"></ul>
+                <ul id="previous-searches-UL"
+                    class="col m-2 flex-column justify-content-center align align-items-center"></ul>
             </div>
             <button id="clear-previous-searches" class="btn btn-danger w-100">Clear</button>
         </div>
 
-        <div id="results-area-div" class="col-8">
+        <div id="results-area-div" class="col-9">
             <div id="city-today-div">
                 <h3 id="city-time-header"></h3>
                 <p id="current-temp"></p>
@@ -39,8 +40,10 @@
 
                 <!-- Today's weather here -->
             </div>
-            <div id="five-day-forecast-div" class="row">
+            <div>
+                <div id="five-day-header-div"></div>
                 <!-- 5 day forecast cards here -->
+                <div id="five-day-forecast-div" class="container row d-flex justify-content-between"></div>
             </div>
         </div>
 
