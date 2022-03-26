@@ -40,7 +40,7 @@ function subitFormHandler(event) {
 
 function getGeoCodingInfo(city) {
     // http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
-    var apiURL = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPIKey;
+    var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&appid=" + openWeatherAPIKey;
 
     fetch(apiURL)
         .then(function (response) {
@@ -100,7 +100,7 @@ function displayCurrentWeather(data) {
     cityTimeHeader.textContent = cityGeoData.name + ' : ' + date;
 
     var currentIconID = data.current.weather[0].icon;
-    var currentIconURL = "http://openweathermap.org/img/wn/" + currentIconID + "@2x.png";
+    var currentIconURL = "https://openweathermap.org/img/wn/" + currentIconID + "@2x.png";
     currentWeatherIconImg.setAttribute("src", currentIconURL);
     currentWeatherIconImg.setAttribute("style", 'display: flex');
 
@@ -127,7 +127,7 @@ function displayCurrentWeather(data) {
         // Get Forecast Variables
         var forecastDay = parseInt(currentDay) + i + 1;
         var iconID = data.daily[i].weather[0].icon;
-        var iconURL = "http://openweathermap.org/img/wn/" + iconID + "@2x.png";
+        var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
 
         // Add each day card
         var thisCardDiv = document.createElement('div');
