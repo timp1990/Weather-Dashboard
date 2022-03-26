@@ -13,6 +13,7 @@ var currentTemp = document.getElementById('current-temp');
 var currentWind = document.getElementById('current-wind');
 var currentHumidity = document.getElementById('current-humidity');
 var currentUV = document.getElementById('current-uv');
+var currentWeatherIconImg = document.getElementById("current-weather-icon-img");
 
 // global variables
 var openWeatherAPIKey = 'a667932ac6ff632247e4626d841090bd';
@@ -94,8 +95,15 @@ function getCurrentWeather(cityGeoData) {
 
 function displayCurrentWeather(data) {
     console.log(data)
+
     // Current Weather
     cityTimeHeader.textContent = cityGeoData.name + ' : ' + date;
+
+    var currentIconID = data.current.weather[0].icon;
+    var currentIconURL = "http://openweathermap.org/img/wn/" + currentIconID + "@2x.png";
+    currentWeatherIconImg.setAttribute("src", currentIconURL);
+    currentWeatherIconImg.setAttribute("style", 'display: flex');
+
     currentTemp.textContent = 'Temp : ' + data.current.temp + " C";
     currentWind.textContent = 'Wind : ' + data.current.wind_speed + " m/s";
     currentHumidity.textContent = 'Humidity : ' + data.current.humidity + " %";
@@ -113,7 +121,7 @@ function displayCurrentWeather(data) {
     // 5 day forecast
     var fiveDayHeader = document.createElement('h3');
     fiveDayHeader.textContent = "Five Day Forecast : ";
-    fiveDayHeaderDiv.appendChild(fiveDayHeader)
+    fiveDayHeaderDiv.appendChild(fiveDayHeader);
 
     for (var i = 0; i < 5; i++) {
         // Get Forecast Variables
@@ -123,12 +131,13 @@ function displayCurrentWeather(data) {
 
         // Add each day card
         var thisCardDiv = document.createElement('div');
-        thisCardDiv.setAttribute('class', 'card m-1');
+        thisCardDiv.setAttribute('class', 'card m-0');
+        thisCardDiv.setAttribute('style', "width: 13rem;")
         var thisCardDivHeader = document.createElement('h4');
         thisCardDivHeader.textContent = forecastDay + "/" + currentMonthAndYear;
         var iconImg = document.createElement('img');
         iconImg.setAttribute('src', iconURL);
-
+        iconImg.setAttribute('style', "width:50px;height:60px;");
 
         var thisCardText = document.createElement('div');
         thisCardText.innerHTML = "<p> Temp : " + data.daily[i].temp.day
@@ -155,12 +164,13 @@ function displayPreviousSearches(previousSearchesString) {
     for (var i in previousSearchesListObject) {
         var thisListObjectLI = document.createElement('li');
         thisListObjectLI.textContent = i;
-        thisListObjectLI.setAttribute('class', 'btn btn-primary w-100 mb-1');
+        thisListObjectLI.setAttribute('class', 'btn btn-secondary w-100 mb-1');
         previousSearchesUL.appendChild(thisListObjectLI)
     }
 }
 
 function getPreviousCity(event) {
+    pageEmpty()
     city = event.target.textContent;
     getGeoCodingInfo(city);
     searchInput.value = '';
@@ -184,9 +194,12 @@ function init() {
     previousSearchesUL.addEventListener('click', getPreviousCity);
     clearPreviousSearchesButton.addEventListener('click', clearSearches);
 
+
+    // Get previous searches on launch
     if (localStorage.getItem('previousSearches')) {
         displayPreviousSearches();
     }
+
 }
 
 init();
