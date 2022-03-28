@@ -30,7 +30,7 @@ No steps are required, the website is live and ready to view
 
 The website may be accessed via a web browser. 
 An example of the site is shown in the image below.
-![Example Site](screenshot.jpg)
+![Example Site](/screenshot.jpg)
 
 To begin the user clicks enters a city in the search bar, and may then click on that city to search for the weather in the future
 ## Credits
