@@ -25,6 +25,7 @@ var cityGeoData = {};
 var previousSearchesListObject = {};
 var city = '';
 
+
 function subitFormHandler(event) {
     event.preventDefault();
     if (searchInput.value) {
@@ -125,7 +126,7 @@ function displayCurrentWeather(data) {
 
     for (var i = 0; i < 5; i++) {
         // Get Forecast Variables
-        var forecastDay = parseInt(currentDay) + i + 1;
+        var forecastDay = moment().add(i + 1, 'days').format('DD/MM/YYYY');
         var iconID = data.daily[i].weather[0].icon;
         var iconURL = "https://openweathermap.org/img/wn/" + iconID + "@2x.png";
 
@@ -134,7 +135,7 @@ function displayCurrentWeather(data) {
         thisCardDiv.setAttribute('class', 'card m-0');
         thisCardDiv.setAttribute('style', "width: 13rem;")
         var thisCardDivHeader = document.createElement('h4');
-        thisCardDivHeader.textContent = forecastDay + "/" + currentMonthAndYear;
+        thisCardDivHeader.textContent = forecastDay;
         var iconImg = document.createElement('img');
         iconImg.setAttribute('src', iconURL);
         iconImg.setAttribute('style', "width:50px;height:60px;");
